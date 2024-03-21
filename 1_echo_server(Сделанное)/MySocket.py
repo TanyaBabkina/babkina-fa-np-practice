@@ -1,7 +1,29 @@
 import socket
 import struct
 
+
+# class MySocket(socket.socket):
+
+#     def send_message(self, message):
+#         message_len = len(message)
+#         header = f"{message_len:<10}".encode("utf-8")
+#         self.sendall(header + message.encode("utf-8"))
+
+#     def receive_message(self):
+#         header = self.recv(10)
+#         message_len = int(header.decode().strip())
+#         message = self.recv(message_len).decode()
+#         return message
+    
+#     def accept(self):
+#         client_socket, address = super().accept()
+#         new_socket = MySocket(client_socket)
+#         return new_socket, address
+    
+#     def str_to_bytes(self, string):
+#         return string.encode("utf-8")
 class MySocket(socket.socket):
+    __slots__ = ()
     
     def send_message(self, message):
         message_bytes = message.encode()

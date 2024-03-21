@@ -49,7 +49,7 @@ def authorize(sock):
                 sock.send_message(input())
 
 
-sock = MySocket.MySocket(socket.AF_INET, socket.SOCK_STREAM)
+sock = MySocket.MySocket()
 connection(sock)
 authorize(sock)
 while True:
