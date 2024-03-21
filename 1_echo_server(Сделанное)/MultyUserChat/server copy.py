@@ -10,7 +10,7 @@ from MySocket import *
 
 HOST = ""
 PORT = 9090
-MAX_CONNECTION = 5
+MAX_CONNECTION = 1
 
 logging.basicConfig(filename="logfile.txt",
                     filemode='a',

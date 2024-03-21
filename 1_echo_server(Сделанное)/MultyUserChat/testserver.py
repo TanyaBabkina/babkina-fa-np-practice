@@ -51,7 +51,7 @@ def recv_data(client):
 def outdatas():
     while True:
  
-                 # Введите информацию, которая будет предоставлена ​​клиенту
+        # Введите информацию, которая будет предоставлена ​​клиенту
         print('')
         outdata = input('')
         print()
@@ -59,7 +59,7 @@ def outdatas():
             print ('Отправить всем:% s'% outdata)
             break
                  
-                 # Отправлять информацию каждому клиенту
+        # Отправлять информацию каждому клиенту
         for client in clients:
             client.send (f"Сервер: {outdata}". encode ('utf-8)'))
  
