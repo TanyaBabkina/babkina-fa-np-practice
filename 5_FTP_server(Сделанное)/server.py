@@ -76,9 +76,9 @@ def clientRegistration(address,connection):
 PORT = 9090
  
 
-logging.basicConfig(filename="logfile.txt",
-                    filemode='a',
-                    level=logging.INFO)
+# logging.basicConfig(filename="logfile.txt",
+#                     filemode='a',
+#                     level=logging.INFO)
 
 
 
