@@ -1,48 +1,69 @@
-
-# import socket
-# import threading
-
-# server_ip = '127.0.0.1'
-# server_port = 9090
-
-# client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
-# def receive_message():
-#     while True:
-        
-#         data, _= client_socket.recvfrom(1024)
-#         print("qdwdqwd")
-#         message = data.decode('utf-8')
-#         print(message)
-
-# receive_thread = threading.Thread(target=receive_message)
-# receive_thread.start()
-
-# while True:
-#     message = input("Введите данные: ")
-#     client_socket.sendto(message.encode('utf-8'), (server_ip, server_port))
-
-
-import socket
-# создаем сокет
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# подключаемся к серверному сокету
-client_socket.connect(('localhost', 9090))
-
-while True:
-    # читаем и выводим ответ от серверного сокета
-    message = client_socket.recv(1024).decode()
-    print(message)
+import socket, threading
+ 
+def input_connection_data():
+    DEFAULT_HOST = "localhost"
+    DEFAULT_PORT = 9090
     
-    # просим ввести сообщение в чат
-    msg_to_send = input("Type your message: ")
-    
-    # отправляем сообщение
-    client_socket.send(bytes(msg_to_send, "utf-8"))
-    
-    # обрабатываем ситуацию выхода из чата
-    if msg_to_send == "exit":
-        break
+    HOST = input("Введите хост или нажмите \\n : ")
+    if HOST == "":
+        HOST = DEFAULT_HOST
 
-# закрываем соединение
-client_socket.close()
+    PORT = input("Введите номер порта или \\n : ")
+    if PORT == "":
+        PORT = DEFAULT_PORT
+    else:
+        PORT = int(PORT)
+
+    return HOST, PORT
+
+def connection(sock):
+    while True:
+        try:
+            HOST, PORT = input_connection_data()
+            sock.connect((HOST, PORT))
+            return sock, HOST, PORT
+        except:
+            print("Ошибка соединения!")
+ 
+def user_name_input():
+    while True:
+        name = input ('Введите имя пользователя чата: ')
+        if 1<len(name):
+            return name
+        else:
+            print("Имя не подходит")
+    
+
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock, host, port = connection(client)
+name = user_name_input()
+print("Вы подключены к серверу")
+ 
+ 
+def massage_send():
+    while True:
+        outdata = input('')
+        if outdata=='enter':
+            break
+        client.send(f'{name}:{outdata}'.encode('utf-8'))
+        print('%s:%s'% (name, outdata))
+ 
+ 
+def message_recive():
+ 
+    while True:
+        indata = client.recv(1024)
+        print(indata.decode('utf-8'))
+ 
+
+t1 = threading.Thread(target=message_recive, name='input')
+t2 = threading.Thread(target=massage_send, name='out')
+
+t1.start()
+t2.start()
+ 
+ # Заблокировать поток, основной поток не может завершиться, пока не завершится выполнение дочернего потока.
+# t1.join()
+t2.join()
+
+print ('-' * 5 + 'сервер отключен' + '-' * 5)

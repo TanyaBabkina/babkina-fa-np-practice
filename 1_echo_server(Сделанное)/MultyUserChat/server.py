@@ -1,94 +1,79 @@
-# import socket
+import socket, threading
+ 
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-# server_ip = '127.0.0.1'
-# server_port = 9090
+host = ""
+port = 9090
 
-# server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-# server_socket.bind((server_ip, server_port))
+server.bind((host, port))
 
-# clients = {}
+server.listen(5)
+ 
+print('Enter для выхода с сервера')
+clients = list()
+ # Хранить клиентов, которые создали потоки
+end = list()
 
-# print('Server is running...')
-
-# while True:
-#     # print("List of clients ", clients)
-#     data, client_addr = server_socket.recvfrom(1024)
-#     print(client_addr, "Адрес клиента 1")
-#     message = data.decode('utf-8')
-#     print(message)
-#     if client_addr not in clients:
-#         clients[client_addr] = server_socket
-
-#     for address in clients:
-#         if address != client_addr:
-#             server_socket.sendto(message.encode('utf-8'), address)
-#             print("отправлено")
-
-import socket
-from threading import Thread
-
-# функция нужна для старта приёма сообщений
-def accept_incoming_connections():
-    global addresses
+def accept_client():
     while True:
-        client, client_address = sock.accept()
-        # выведите информацию о подключении
-        print(f"Подключение от: {client_address}")
-        # попросите ввести имя
-        client.send("Введите ваше имя: ".encode('utf-8'))
-        name = client.recv(1024).decode("utf-8")
+        client, addr = server.accept()
+        clients.append(client)
 
-        # добавьте адрес клиента в словарь addresses
-        addresses[client] = client_address
-        broadcast(f'{name} присоединился к чату!')
-        clients[client] = name
 
-        Thread(target=handle_client, args=[client]).start()
-
-# функция обрабатывает сообщения одного клиента
-def handle_client(client):
-    global clients
-    name = clients[client]
-    # # получите сообщение с именем клиента и поприветсвуйте его
-    # name = client.recv(1024).decode("utf-8")
-    # broadcast(f'{name} присоединился к чату!')
-    
-    # # добавьте имя клиента в словарь clients (в качестве ключей - сокеты клиентов)
-    # clients[client] = name
-
-    # получайте сообщения от клиентов в чате
+def recv_data(client):
     while True:
-        msg = client.recv(1024).decode("utf-8")
-        print(msg)
-        # используя функцию broadcast() отправляйте сообщения всем участникам чата
-        broadcast(f'{name}: {msg}\n')
-
-        # обработайте ситуацию выхода клиента из чата:
-        if not msg:
-            # предупредите, что участник вышел из чата
-            broadcast(f'{name} покинул чат.\n')
-            # закройте соединение
-            client.close()
-            # удалите участника из clients
-            del clients[client]
+        try:
+            indata = client.recv(1024)
+        except Exception as e:
+            clients.remove(client)
+            end.remove(client)
             break
+        print(indata.decode('utf-8'))
+        for clien in clients:
+            if clien != client:
+                clien.send(indata)
+ 
+ 
+def send_message():
+    while True:
+ 
+        # Введите информацию, которая будет предоставлена ​​клиенту
+        print('')
+        outdata = input('')
+        print()
+        if outdata=='enter':
+            print ('Отправить всем:% s'% outdata)
+            break
+                 
+        for client in clients:
+            client.send (f"Сервер: {outdata}". encode ('utf-8)'))
+ 
+ 
+def recive_message():
+    while True:
+            for clien in clients:
+                if clien in end:
+                    continue
+                index = threading.Thread(target = recv_data,args = (clien,))
+                index.start()
+                end.append(clien)
+ 
 
+t1 = threading.Thread(target = recive_message,name = 'input')
+t1.start()
+ 
 
-# функция отправляет сообщения всем клиентам
-def broadcast(msg):
-    global clients
-    # отправляйте сообщения все клиентам из словаря clients
-    for client in clients:
-        client.send(msg.encode("utf-8"))
+ 
+t2 = threading.Thread(target = send_message, name= 'out')
+t2.start()
+ 
+t3 = threading.Thread(target = accept_client(),name = 'accept')
+t3.start()
+ 
+ # Блокировать округ, пока подпоток не будет завершен, и основной поток не может закончиться
+# t1.join()
+t2.join()
 
-clients = {}
-addresses = {}
-
-sock = socket.socket()
-sock.bind(("", 9090))
-sock.listen(5)
-print("Waiting for connection...")
-accept_thread = Thread(target=accept_incoming_connections)
-accept_thread.start()
-accept_thread.join()
-sock.close()
+for client in clients:
+    client.close()
+print('-' * 5 + 'сервер отключен' + '-' * 5)

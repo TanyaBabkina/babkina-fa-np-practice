@@ -54,7 +54,7 @@ def accauntExists(address):
 
 def clientRegistration(address,connection):
     if accauntExists(address):
-        print("Yes")
+        print("User exists")
         connection.send_message("Yes")
         connection.send_message(f"Здравствуйте, {clientName(address)}\nВведите пароль: ")
         password = connection.receive_message()
@@ -66,8 +66,7 @@ def clientRegistration(address,connection):
                 connection.send_message(f"Введите пароль: ")
                 password = connection.receive_message()
     else:
-        print("No")
-        print(type(connection))
+        print("User not exists")
         connection.send_message("No")
         connection.send_message("Введите имя пользователя: ")
         new_client = connection.receive_message()
@@ -118,14 +117,12 @@ def GetAndChangeData(sock, conn):
 
 while True:
     sock = MySocket()
-    print(type(sock))
     sock, HOST, PORT = check_port(sock, HOST, PORT)
     print(HOST, PORT)
-    print(type(sock))
     conn, addr = connectClient(sock, HOST, PORT)
-    print(type(sock), "gv",type(conn) )
     clientRegistration(addr[0],conn)
     GetAndChangeData(sock, conn)
     sock.close()
+    
     
     
