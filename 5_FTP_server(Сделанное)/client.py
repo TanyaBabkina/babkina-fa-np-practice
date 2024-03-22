@@ -20,10 +20,11 @@ def authorize(sock):
         sock.send(input().encode())
         while True:
             resp = sock.recv(1024).decode()
-            print(resp)
             if resp == "Yes":
+                print("You are signed in")
                 break
             else:
+                print("Wrong pass")
                 sock.send(input().encode())
 
 sock = socket.socket()

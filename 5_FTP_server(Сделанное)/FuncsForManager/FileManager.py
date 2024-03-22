@@ -13,7 +13,6 @@ class FileManager:
     def __init__(self, root):
         self.root = root
         os.chdir(self.root)
-        print(root, "in manager")
 
     def create_file(self, fileName):
         filepath = os.path.join(os.getcwd(), fileName)

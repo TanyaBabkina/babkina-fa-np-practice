@@ -8,7 +8,6 @@ import os
 from FuncsForManager.FileManager import *
 from FuncsForManager.FileManagerSetings import *
 
-
 def encrypt_password(password):
     salt = b'salt'  # добавляем соль для усиления защиты
     hashed_password = hashlib.sha256(salt + password.encode()).hexdigest()
@@ -48,12 +47,11 @@ def accauntExists(address):
 def clientRegistration(address,connection):
     global root
     if accauntExists(address):
-        print("Yes")
+        print("User registed")
         connection.send("Yes".encode())
         connection.send(f"Здравствуйте, {clientName(address)}\nВведите пароль: ".encode())
         if address != "root":
             root = root+clientName(address)
-        print(root, "in root in regist")
         password = connection.recv(1024).decode()
         while True:
             if check_pass(address, password):
@@ -63,8 +61,7 @@ def clientRegistration(address,connection):
                 connection.send(f"Введите пароль: ".encode())
                 password = connection.recv(1024).decode()
     else:
-        print("No")
-        print(type(connection))
+        print("User not exists")
         connection.send("No".encode())
         connection.send("Введите имя пользователя: ".encode())
         new_client = connection.recv(1024).decode()
@@ -72,15 +69,14 @@ def clientRegistration(address,connection):
         new_password = connection.recv(1024).decode()
         add_client(address, new_client, new_password)
         root = root+clientName(address)
-        # print(root)
         os.makedirs(root) 
-
+    
 
 
 PORT = 9090
  
 
-logging.basicConfig(filename="C:\\Users\\1\\Desktop\\babkina-fa-np-practice\\5_FTP_server(Сделанное)\\logfile.txt",
+logging.basicConfig(filename="logfile.txt",
                     filemode='a',
                     level=logging.INFO)
 
@@ -99,7 +95,6 @@ print(addr)
 
 
 manager = FileManager(root)
-print(root, "in main")
 while True:  
     request = conn.recv(1024).decode()
     logging.info(f'[{datetime.now().strftime("%H:%M:%S")}] Reading data')
@@ -119,7 +114,7 @@ while True:
 
     logging.info(f'[{datetime.now().strftime("%H:%M:%S")}] Perform some func')
     response = process(request, root, manager)
-    logging.info(f'[{datetime.now().strftime("%H:%M:%S")}] Sending data [{response}] to the client'.encode("utf-8"))
+    logging.info(f'[{datetime.now().strftime("%H:%M:%S")}] Sending response to the client')
     conn.send(response.encode())
 
  

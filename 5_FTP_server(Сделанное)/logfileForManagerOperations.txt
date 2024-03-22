@@ -1,0 +1,215 @@
+INFO:root:[09:12:39] Starting the server on port 9090
+INFO:root:[09:12:39] Start listening to the port 9090
+INFO:root:[09:13:42] Starting the server on port 9090
+INFO:root:[09:13:42] Start listening to the port 9090
+INFO:root:[09:13:56] Connecting the client ('127.0.0.1', 63529)
+INFO:root:[09:14:01] Reading data
+INFO:root:[09:14:03] Perform some func
+INFO:root:[09:14:03] the command was received [su]
+INFO:root:[09:14:03] Memmory test
+INFO:root:[09:14:03] Memmory test OK
+INFO:root:[09:14:03] Root mode
+INFO:root:[09:14:03] Sending response to the client
+INFO:root:[09:14:08] Reading data
+INFO:root:[09:14:08] Perform some func
+INFO:root:[09:14:08] the command was received [fwefwe]
+INFO:root:[09:14:08] Memmory test
+INFO:root:[09:14:08] Memmory test OK
+INFO:root:[09:14:08] Wronge command
+INFO:root:[09:14:08] Sending response to the client
+INFO:root:[09:14:12] Reading data
+INFO:root:[09:14:12] Perform some func
+INFO:root:[09:14:12] the command was received []
+INFO:root:[09:14:12] Memmory test
+INFO:root:[09:14:12] Memmory test OK
+INFO:root:[09:14:12] Some error
+INFO:root:[09:14:12] Sending response to the client
+INFO:root:[09:16:09] Starting the server on port 9090
+INFO:root:[09:16:09] Start listening to the port 9090
+INFO:root:[09:16:14] Connecting the client ('127.0.0.1', 63540)
+INFO:root:[09:16:19] Reading data
+INFO:root:[09:16:19] Perform some func
+INFO:root:[09:16:19] the command was received [cd n]
+INFO:root:[09:16:19] Memmory test
+INFO:root:[09:16:19] Memmory test OK
+INFO:root:[09:16:19] Change repos on "n"
+INFO:root:[09:16:19] No such file or derectory
+INFO:root:[09:16:19] Sending response to the client
+INFO:root:[09:16:21] Reading data
+INFO:root:[09:16:21] Perform some func
+INFO:root:[09:16:21] the command was received [ls]
+INFO:root:[09:16:21] Memmory test
+INFO:root:[09:16:21] Memmory test OK
+INFO:root:[09:16:21] outputting existing repositories
+INFO:root:[09:16:21] Sending response to the client
+INFO:root:[09:16:33] Reading data
+INFO:root:[09:16:33] Perform some func
+INFO:root:[09:16:33] the command was received []
+INFO:root:[09:16:33] Memmory test
+INFO:root:[09:16:33] Memmory test OK
+INFO:root:[09:16:33] Some error
+INFO:root:[09:16:33] Sending response to the client
+INFO:root:[09:17:18] Starting the server on port 9090
+INFO:root:[09:17:18] Start listening to the port 9090
+INFO:root:[09:17:23] Connecting the client ('127.0.0.1', 63549)
+INFO:root:[09:17:25] Reading data
+INFO:root:[09:17:25] Perform some func
+INFO:root:[09:17:25] the command was received [ls]
+INFO:root:[09:17:25] Memmory test
+INFO:root:[09:17:25] Memmory test OK
+INFO:root:[09:17:25] outputting existing repositories
+INFO:root:[09:17:25] Sending response to the client
+INFO:root:[09:17:45] Reading data
+INFO:root:[09:17:45] Perform some func
+INFO:root:[09:17:45] the command was received []
+INFO:root:[09:17:45] Memmory test
+INFO:root:[09:17:45] Memmory test OK
+INFO:root:[09:17:45] Some error
+INFO:root:[09:17:45] Sending response to the client
+INFO:root:[09:17:47] Starting the server on port 9090
+INFO:root:[09:17:47] Start listening to the port 9090
+INFO:root:[09:17:57] Connecting the client ('127.0.0.1', 63551)
+INFO:root:[09:18:06] Reading data
+INFO:root:[09:18:06] Perform some func
+INFO:root:[09:18:06] the command was received [ls]
+INFO:root:[09:18:06] Memmory test
+INFO:root:[09:18:06] Memmory test OK
+INFO:root:[09:18:06] outputting existing repositories
+INFO:root:[09:18:06] Sending response to the client
+INFO:root:[09:18:12] Reading data
+INFO:root:[09:18:12] Perform some func
+INFO:root:[09:18:12] the command was received [pwd]
+INFO:root:[09:18:12] Memmory test
+INFO:root:[09:18:12] Memmory test OK
+INFO:root:[09:18:12] Pwd shown
+INFO:root:[09:18:12] Sending response to the client
+INFO:root:[09:19:21] Reading data
+INFO:root:[09:19:21] Perform some func
+INFO:root:[09:19:21] the command was received []
+INFO:root:[09:19:21] Memmory test
+INFO:root:[09:19:21] Memmory test OK
+INFO:root:[09:19:21] Some error
+INFO:root:[09:19:21] Sending response to the client
+INFO:root:[09:19:24] Starting the server on port 9090
+INFO:root:[09:19:24] Start listening to the port 9090
+INFO:root:[09:19:32] Connecting the client ('127.0.0.1', 63555)
+INFO:root:[09:22:21] Starting the server on port 9090
+INFO:root:[09:22:21] Start listening to the port 9090
+INFO:root:[09:22:25] Connecting the client ('127.0.0.1', 63577)
+INFO:root:[09:24:43] Starting the server on port 9090
+INFO:root:[09:24:43] Start listening to the port 9090
+INFO:root:[09:24:50] Connecting the client ('127.0.0.1', 63587)
+INFO:root:[09:24:52] Reading data
+INFO:root:[09:24:52] Perform some func
+INFO:root:[09:24:52] the command was received [ls]
+INFO:root:[09:24:52] Memmory test
+INFO:root:[09:24:52] Memmory test OK
+INFO:root:[09:24:52] outputting existing repositories
+INFO:root:[09:24:52] Sending response to the client
+INFO:root:[09:24:58] Reading data
+INFO:root:[09:24:58] Perform some func
+INFO:root:[09:24:58] the command was received [cd t]
+INFO:root:[09:24:58] Memmory test
+INFO:root:[09:24:58] Memmory test OK
+INFO:root:[09:24:58] Change repos on "t"
+INFO:root:[09:24:58] Sending response to the client
+INFO:root:[09:25:00] Reading data
+INFO:root:[09:25:00] Perform some func
+INFO:root:[09:25:00] the command was received [ls]
+INFO:root:[09:25:00] Memmory test
+INFO:root:[09:25:00] Memmory test OK
+INFO:root:[09:25:00] outputting existing repositories
+INFO:root:[09:25:00] Sending response to the client
+INFO:root:[09:25:02] Reading data
+INFO:root:[09:25:02] Perform some func
+INFO:root:[09:25:02] the command was received [cd ../..]
+INFO:root:[09:25:02] Memmory test
+INFO:root:[09:25:02] Memmory test OK
+INFO:root:[09:25:02] Change repos on "../.."
+INFO:root:[09:25:02] Sending response to the client
+INFO:root:[09:25:06] Reading data
+INFO:root:[09:25:06] Perform some func
+INFO:root:[09:25:06] the command was received [root]
+INFO:root:[09:25:06] Memmory test
+INFO:root:[09:25:06] Memmory test OK
+INFO:root:[09:25:06] Wronge command
+INFO:root:[09:25:06] Sending response to the client
+INFO:root:[09:25:09] Reading data
+INFO:root:[09:25:10] Perform some func
+INFO:root:[09:25:10] the command was received [su]
+INFO:root:[09:25:10] Memmory test
+INFO:root:[09:25:10] Memmory test OK
+INFO:root:[09:25:10] Root mode
+INFO:root:[09:25:10] Sending response to the client
+INFO:root:[09:25:12] Reading data
+INFO:root:[09:25:12] Perform some func
+INFO:root:[09:25:12] the command was received [ls]
+INFO:root:[09:25:12] Memmory test
+INFO:root:[09:25:12] Memmory test OK
+INFO:root:[09:25:12] outputting existing repositories
+INFO:root:[09:25:12] Sending response to the client
+INFO:root:[09:25:15] Reading data
+INFO:root:[09:25:15] Perform some func
+INFO:root:[09:25:15] the command was received [cd ..]
+INFO:root:[09:25:15] Memmory test
+INFO:root:[09:25:15] Memmory test OK
+INFO:root:[09:25:15] Change repos on ".."
+INFO:root:[09:25:15] Sending response to the client
+INFO:root:[09:25:18] Reading data
+INFO:root:[09:25:18] Perform some func
+INFO:root:[09:25:18] the command was received []
+INFO:root:[09:25:18] Memmory test
+INFO:root:[09:25:18] Memmory test OK
+INFO:root:[09:25:18] Some error
+INFO:root:[09:25:18] Sending response to the client
+INFO:root:[09:27:02] Starting the server on port 9090
+INFO:root:[09:27:02] Start listening to the port 9090
+INFO:root:[09:27:07] Connecting the client ('127.0.0.1', 63593)
+INFO:root:[09:27:14] Reading data
+INFO:root:[09:27:14] Perform some func
+INFO:root:[09:27:14] the command was received []
+INFO:root:[09:27:14] Memmory test
+INFO:root:[09:27:14] Memmory test OK
+INFO:root:[09:27:14] Some error
+INFO:root:[09:27:14] Sending response to the client
+INFO:root:[09:27:44] Starting the server on port 9090
+INFO:root:[09:27:44] Start listening to the port 9090
+INFO:root:[09:27:52] Connecting the client ('127.0.0.1', 63597)
+INFO:root:[09:27:54] Reading data
+INFO:root:[09:27:54] Perform some func
+INFO:root:[09:27:54] the command was received [ls]
+INFO:root:[09:27:54] Memmory test
+INFO:root:[09:27:54] Memmory test OK
+INFO:root:[09:27:54] outputting existing repositories
+INFO:root:[09:27:54] Sending response to the client
+INFO:root:[09:28:01] Reading data
+INFO:root:[09:28:01] Perform some func
+INFO:root:[09:28:01] the command was received []
+INFO:root:[09:28:01] Memmory test
+INFO:root:[09:28:01] Memmory test OK
+INFO:root:[09:28:01] Some error
+INFO:root:[09:28:01] Sending response to the client
+INFO:root:[09:29:16] Starting the server on port 9090
+INFO:root:[09:29:16] Start listening to the port 9090
+INFO:root:[09:29:22] Connecting the client ('127.0.0.1', 63600)
+INFO:root:[09:29:25] Reading data
+INFO:root:[09:29:25] Perform some func
+INFO:root:[09:29:25] the command was received [ls]
+INFO:root:[09:29:25] Memmory test
+INFO:root:[09:29:25] Memmory test OK
+INFO:root:[09:29:25] outputting existing repositories
+INFO:root:[09:29:25] Sending response to the client
+INFO:root:[09:29:28] Reading data
+INFO:root:[09:29:28] Perform some func
+INFO:root:[09:29:28] the command was received [xit]
+INFO:root:[09:29:28] Memmory test
+INFO:root:[09:29:28] Memmory test OK
+INFO:root:[09:29:28] Wronge command
+INFO:root:[09:29:28] Sending response to the client
+INFO:root:[09:29:31] Reading data
+INFO:root:[09:29:31] Perform some func
+INFO:root:[09:29:31] the command was received []
+INFO:root:[09:29:31] Memmory test
+INFO:root:[09:29:31] Memmory test OK
+INFO:root:[09:29:31] Some error
+INFO:root:[09:29:31] Sending response to the client
