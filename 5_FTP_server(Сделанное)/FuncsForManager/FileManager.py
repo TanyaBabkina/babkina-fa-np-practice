@@ -10,8 +10,9 @@ def checkDir(root, dir):
         return f'\033[31mНет доступа в данную директроию! \033[39m'
 
 class FileManager:
-    def __init__(self, root):
+    def __init__(self, root, conn):
         self.root = root
+        self.conn = conn
         os.chdir(self.root)
 
     def create_file(self, fileName):
@@ -111,3 +112,38 @@ class FileManager:
             return "Файл переименован"
         else:
             return f'\033[31mНет доступа в данную директроию! \033[39m'
+        
+    def copyFileToClient(self, pathOnServer):
+        filepath = os.path.join(os.getcwd(), pathOnServer)
+
+        if checkDir(self.root, filepath)== "ok":
+
+            with open(filepath, 'r') as f:
+                print("Start read file")
+                packet = f.read(1024)
+                self.conn.send(packet.encode())
+                while not packet:
+                    packet = f.read(1024)
+                    self.conn.send(packet.encode())
+                print("Stop send file")
+            return f"\033[32mФайл перемещён\033[39m"
+        else:
+            return f'\033[31mНет доступа в данную директроию! \033[39m'
+        
+    def copyFileToServer(self, pathOnServer):
+        filepath = os.path.join(os.getcwd(), pathOnServer)
+        
+        if checkDir(self.root, filepath)== "ok":
+
+            with open(filepath, 'w') as f:
+                print("Start write file")
+                
+                data = self.conn.recv(1024).decode()
+                f.write(data)
+                while not data:
+                    data = self.conn.recv(1024).decode()
+                    f.write(data)
+                print("Stop send file")
+            return f"\033[32mФайл перемещён\033[39m"
+        else:
+            return f'\033[31mНет доступа в данную директроию! \033[39m'    

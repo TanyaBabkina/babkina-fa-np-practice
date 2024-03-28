@@ -94,7 +94,7 @@ logging.info(f'[{datetime.now().strftime("%H:%M:%S")}] Connecting the client {ad
 print(addr)
 
 
-manager = FileManager(root)
+manager = FileManager(root, conn)
 while True:  
     request = conn.recv(1024).decode()
     logging.info(f'[{datetime.now().strftime("%H:%M:%S")}] Reading data')
@@ -108,11 +108,12 @@ while True:
             root = "C:\\Users\\1\\Desktop\\FileManagerFolder"
         else:
             root = "//home//tanya//Desktop//FileManagerFolder"
-        manager = FileManager(root)
+        manager = FileManager(root, conn)
         clientRegistration("root",conn)
 
 
     logging.info(f'[{datetime.now().strftime("%H:%M:%S")}] Perform some func')
+    print("Process")
     response = process(request, root, manager)
     logging.info(f'[{datetime.now().strftime("%H:%M:%S")}] Sending response to the client')
     conn.send(response.encode())

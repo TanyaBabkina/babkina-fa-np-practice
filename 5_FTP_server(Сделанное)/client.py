@@ -1,4 +1,5 @@
 import socket
+import os
 
 HOST = 'localhost'
 PORT = 9090
@@ -34,6 +35,7 @@ while True:
 
     
     request = input('myftp@shell$ ')
+    print(request)
     if request == "exit":
         sock.close()
         break
@@ -41,8 +43,43 @@ while True:
         sock.send(request.encode())
         authorize(sock)
         response = sock.recv(1024).decode()
-        print(response)
-        
+    elif "copyFileToClient" in request:
+        sock.send(request.encode())
+        print("Start write to file")
+        listRequest = request.split(" ")
+        try:
+            with open(listRequest[2].replace("\\", "\\\\"), "w") as f:
+                data = sock.recv(1024).decode()
+                f.write(data)
+                while not data:
+                    data = sock.recv(1024).decode()
+                    f.write(data)
+            response = sock.recv(1024).decode()
+            print(response)
+        except Exception:
+            print("Директории клиента не существует")
+    
+    elif "copyFileToServer" in request:
+        sock.send(request.encode())
+        print("Start send file")
+        listRequest = request.split(" ")
+        print(listRequest[1].replace("\\", "\\\\"))
+        try:
+
+            with open(listRequest[1].replace("\\", "\\\\"), "r") as f:
+                packet = f.read(1024)
+                print(packet)
+                sock.send(packet.encode())
+
+                while not packet:
+                    packet = f.read(1024)
+                    sock.send(packet.encode())
+                print("Stop sending the file")
+            response = sock.recv(1024).decode()
+            print(response)
+        except Exception:
+            print("Директории клиента не существует")
+
     else:
         sock.send(request.encode())
     

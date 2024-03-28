@@ -25,6 +25,7 @@ def folder_size(path, max_size=MAXSIZE):
 def process(req, root, manager):
     logging.info(f'[{datetime.now().strftime("%H:%M:%S")}] the command was received [{req}]')
     command = req.split()
+
     try:
         logging.info(f'[{datetime.now().strftime("%H:%M:%S")}] Memmory test')
         if folder_size(root) or root[-17:] == "FileManagerFolder":
@@ -86,6 +87,14 @@ def process(req, root, manager):
                 logging.info(f'[{datetime.now().strftime("%H:%M:%S")}] Rename file "{command[1]}" to "{command[2]}"')
                 rez = manager.file_rename(command[1], command[2])
                 return rez 
+            elif (command[0] == 'copyFileToClient'):
+                logging.info(f'[{datetime.now().strftime("%H:%M:%S")}] Copy file "{command[1]}" to client "{command[2]}"')
+                rez = manager.copyFileToClient(command[1])
+                return rez
+            elif (command[0] == 'copyFileToServer'):
+                logging.info(f'[{datetime.now().strftime("%H:%M:%S")}] Copy file "{command[1]}" to server "{command[2]}"')
+                rez = manager.copyFileToServer(command[2])
+                return rez
             else:
                 logging.info(f'[{datetime.now().strftime("%H:%M:%S")}] Wronge command')
                 return f"\033[31mНеверный ввод!\033[39m"
